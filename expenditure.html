@@ -51,60 +51,61 @@
 
     <div class="container mx-auto">
         <div class="text-center">
-            <h1><b>TRANSAKSI PEMASUKAN</b></h1>
+            <h1><b>TRANSAKSI PENGELUARAN</b></h1>
         </div>
         <br>
         <div class="flex justify-center gap-10">
             <div>
-                <form id="form-income" action="" onsubmit="event.preventDefault(); addIncome(this)">
+                <form id="form-expenditure" action="" onsubmit="event.preventDefault(); addExpenditure(this)">
                     <input type="hidden" name="index" value="-1">
-                    <div>
-                        <div>
-                            <label for="name">Nama</label>
-                        </div>
-                        <div>
-                            <input id="name" name="name" type="text" placeholder="Masukkan Nama" class="input input-bordered input-primary w-full max-w-xs" />
-                        </div>
-                    </div>
                     <div>
                         <div>
                             <label for="date">Tanggal</label>
                         </div>
                         <div>
-                            <input id="date" name="date" type="date" placeholder="Masukkan tanggal" class="input input-bordered input-primary w-full max-w-xs" />
+                            <input id="date" name="date" type="date" placeholder="Masukkan Tanggal" class="input input-bordered input-primary w-full max-w-xs" />
                         </div>
                     </div>
                     <div>
                         <div>
-                            <label for="pay">Jumlah Bayar</label>
+                            <label for="explanation">Keterangan</label>
                         </div>
                         <div>
-                            <input id="pay" name="pay" type="number" placeholder="Masukkan Jumlah Bayar" class="input input-bordered input-primary w-full max-w-xs" />
+                            <input id="explanation" name="explanation" type="text" placeholder="Masukkan Keterangan" class="input input-bordered input-primary w-full max-w-xs" />
+                        </div>
+                    </div>
+                    <div>
+                        <div>
+                            <label for="take">Jumlah Bayar</label>
+                        </div>
+                        <div>
+                            <input id="take" name="take" type="number" placeholder="Masukkan Jumlah Ambil" class="input input-bordered input-primary w-full max-w-xs" />
                         </div>
                     </div>
                     <div class="card-actions justify-end">
-                        <button id="btn-save-income" class="btn btn-primary mt-2 btn-sm">Simpan</button>
+                        <button id="btn-save-expenditure" class="btn btn-primary mt-2 btn-sm">Simpan</button>
                     </div>
                 </form>
             </div>
             <div class="overflow-x-auto">
-                <table class="table table-compact w-full" id="tableIncome">
+                <table class="table table-compact w-full" id="tableExpenditure">
                     <!-- head -->
                     <thead>
                     <tr>
                         <th></th>
-                        <th>Nama</th>
                         <th>Tanggal</th>
-                        <th>Bayar</th>
+                        <th>Keterangan</th>
+                        <th>Ambil</th>
                     </tr>
                     </thead>
-                    <tbody id="income-table"></tbody>
+                    <tbody id="expenditure-table"></tbody>
                 </table>
-                <span id="totalIncome" class="flex justify-end"></span>
+                <span id="totalExpenditure" class="flex justify-end"></span>
+                <span id="balance" class="flex justify-end"></span>
             </div>
         </div>
     </div>
 
-    <script src="income.js"></script>
+    <script src="expenditure.js"></script>
 </body>
 </html>
