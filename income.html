@@ -14,36 +14,21 @@
           <a class="btn btn-ghost normal-case text-xl">E-KAS</a>
         </div>
         <div class="flex-none">
-          <ul class="menu menu-horizontal px-1">
-            <li><a href="dasboard.html">Beranda</a></li>
-            <li tabindex="0">
-              <a>
-                Transaksi
-                <svg class="fill-current" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"/></svg>
-              </a>
-              <ul class="p-2 bg-base-100">
-                <li><a href="income.html">Pemasukan</a></li>
-                <li><a href="expenditure.html">Pengeluaran</a></li>
-              </ul>
-            </li>
-            <div class="form-control">
-                <div class="dropdown dropdown-end">
-                    <label tabindex="0" class="btn btn-ghost btn-circle avatar">
-                        <div class="w-10 rounded-full">
-                            <img src="/images/stock/photo-1534528741775-53994a69daeb.jpg" />
-                        </div>
-                    </label>
-                    <ul tabindex="0" class="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52">
-                        <li>
-                            <a class="justify-between">
-                                Profil
-                            </a>
-                        </li>
-                        <li><a>Keluar</a></li>
+            <ul class="menu menu-horizontal px-1">
+                <li><a href="dasboard.html"><i class="fa-solid fa-house"></i>Beranda</a></li>
+                <li tabindex="0">
+                    <a>
+                        Transaksi
+                        <svg class="fill-current" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"/></svg>
+                    </a>
+                    <ul class="p-2 bg-base-100">
+                        <li><a href="income.html">Pemasukan</a></li>
+                        <li><a href="expenditure.html">Pengeluaran</a></li>
                     </ul>
-                </div>
-            </div>
-          </ul>
+                </li>
+                <li><a href="studentList.html">Daftar Siswa</a></li>
+                <li><a href="login.html">Keluar</a></li>
+            </ul>
         </div>
     </div>
 
@@ -63,7 +48,9 @@
                             <label for="name">Nama</label>
                         </div>
                         <div>
-                            <input id="name" name="name" type="text" placeholder="Masukkan Nama" class="input input-bordered input-primary w-full max-w-xs" />
+                            <select name="name" id="name" class="select select-primary w-full max-w-xs">
+                                <option value="">Pilih Nama</option>
+                            </select>
                         </div>
                     </div>
                     <div>
@@ -100,7 +87,7 @@
                     </thead>
                     <tbody id="income-table"></tbody>
                 </table>
-                <span id="totalIncome" class="flex justify-end"></span>
+                <span name="totalIncome" id="totalIncome" class="flex justify-end"></span>
             </div>
         </div>
     </div>

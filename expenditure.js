@@ -14,6 +14,16 @@ const databaseExpenditureTable = {
     }
 }
 
+const databaseIncomeTable = {
+    save(incomeTable) {
+        localStorage.setItem('incomeTable', JSON.stringify(incomeTable));
+    },
+
+    get() {
+        return JSON.parse(localStorage.getItem('incomeTable'));
+    }
+}
+
 const expenditureTableApplication = {
     expenditure: {
         index: -1,
@@ -90,12 +100,16 @@ const expenditureTableApplication = {
 		}
 		document.getElementById("totalExpenditure").innerHTML = "Total = "+ sumHsl;
     },
+    
     balance: function () {
-        var totalIncome = document.getElementById("totalIncome");
-        var totalExpenditure = document.getElementById("totalExpenditure");
-        
-        var balance = parseInt(totalIncome) - parseInt(totalExpenditure);
-        document.getElementById("balance").innerHTML = "Saldo = " + balance;
+        var totalIncome = databaseIncomeTable.get();
+        var totalExpenditure = document.getElementById('totalExpenditure').value;
+        var balance = document.getElementById('balance');
+        totalIncome.forEach((item) => {
+            // balance.innerHTML += item.pay - totalExpenditure;
+            // var result = parseInt(item.pay) - parseInt(totalExpenditure);
+            balance.innerHTML = `Saldo = ${parseInt(totalExpenditure)}`
+        })
     }
 }
 

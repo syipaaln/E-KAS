@@ -14,12 +14,32 @@ const databaseIncomeTable = {
     }
 }
 
+const databaseStudentList = {
+    save(studentList) {
+        localStorage.setItem('studentList', JSON.stringify(studentList));
+    },
+
+    get() {
+        return JSON.parse(localStorage.getItem('studentList'));
+    }
+}
+
+const studentListApplication = {
+    showStudentList: function () {
+        this.studentList = databaseStudentList.get();
+        const listOption = document.getElementById('name');
+        this.studentList.forEach((item) => {
+            listOption.innerHTML += `<option>${item.name}</option>`
+        })
+    }
+}
+
 const incomeTableApplication = {
     income: {
         index: -1,
         name: null,
         date: null,
-        pay: null
+        pay: null,
     },
     incomeTable: [],
     inputIncome: function (form) {
@@ -48,7 +68,6 @@ const incomeTableApplication = {
             this.incomeTable[this.income.index] = copy(this.income)
         }
 
-        this.total();
         databaseIncomeTable.save(this.incomeTable);
         this.resetFormIncome(form);
     },
@@ -98,3 +117,4 @@ function copy(obj) {
 }
 
 incomeTableApplication.showIncomeTable();
+studentListApplication.showStudentList();
