@@ -37,19 +37,7 @@ const databaseIncomeTable = {
 const incomeTableApplication = {
     showIncomeTable: function () {
         this.incomeTable = databaseIncomeTable.get();
-        // const componentIncomeTable = document.getElementById('income');
-        // componentIncomeTable = 0;
-        // if (this.incomeTable === null) {
-        //     this.incomeTable = [];
-        // } else {
-        //     this.incomeTable.forEach((item) => {
-        //         componentIncomeTable = `
-        //         <tr>
-        //             <td>${componentIncomeTable + JSON.parse(item.pay)}</td>
-        //         </tr>`
-        //         // totalIncom = totalIncom + JSON.parse(item.pay)
-        //     });
-        // }
+
         let totalIncom = 0
         if (this.incomeTable == null) {
             this.incomeTable = [];
@@ -75,21 +63,7 @@ const databaseExpenditureTable = {
 const expenditureTableApplication = {
     showExpenditureTable: function () {
         this.expenditureTable = databaseExpenditureTable.get();
-        // const componentExpenditureTable = document.getElementById('expenditure-table');
-        // componentExpenditureTable.innerHTML = '';
-        // if (this.expenditureTable === null) {
-        //     this.expenditureTable = [];
-        // } else {
-        //     this.expenditureTable.forEach((expenditure) => {
-        //         componentExpenditureTable.innerHTML += `
-        //         <tr>
-        //             <th>1</th>
-        //             <td>${expenditure.date}</td>
-        //             <td>${expenditure.explanation}</td>
-        //             <td>${expenditure.take}</td>
-        //         </tr>`
-        //     });
-        // }
+
         let totalExpend = 0
         if (this.expenditureTable == null) {
             this.expenditureTable = [];
