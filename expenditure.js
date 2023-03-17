@@ -89,28 +89,44 @@ const expenditureTableApplication = {
                 </tr>`
             });
         }
-        this.total();
-        this.balance();
+        this.totalExpenditure();
+        // this.balance();
     },
-    total: function () {
-        var table = document.getElementById("tableExpenditure"), sumHsl = 0;
-		for(var t = 1; t < table.rows.length; t++)
-		{
-			sumHsl = sumHsl + parseInt(table.rows[t].cells[3].innerHTML);
-		}
-		document.getElementById("totalExpenditure").innerHTML = "Total = "+ sumHsl;
+    totalExpenditure: function () {
+        this.expenditureTable = databaseExpenditureTable.get()
+        console.log(this.expenditureTable);
+
+        let totalExpend = 0
+        this.expenditureTable.forEach(item => {
+            totalExpend = totalExpend + JSON.parse(item.take)
+        }) 
+
+        document.getElementById("totalExpenditure").innerHTML = "Total = "+ totalExpend;
+        return totalExpend
     },
     
-    balance: function () {
-        var totalIncome = databaseIncomeTable.get();
-        var totalExpenditure = document.getElementById('totalExpenditure').value;
-        var balance = document.getElementById('balance');
-        totalIncome.forEach((item) => {
-            // balance.innerHTML += item.pay - totalExpenditure;
-            // var result = parseInt(item.pay) - parseInt(totalExpenditure);
-            balance.innerHTML = `Saldo = ${parseInt(totalExpenditure)}`
-        })
-    }
+    // balance: function () {
+    //     this.expenditureTable = databaseExpenditureTable.get()
+    //     this.incomeTable = databaseIncomeTable.get()
+    //     console.log(this.incomeTable);
+
+    //     let balance = 0
+    //     this.incomeTable.forEach(item => {
+    //         balance = balance + JSON.parse(item.pay)
+    //     })
+    //     this.expenditureTable.forEach(item => {
+    //         balance = balance - JSON.parse(item.take)
+    //     })
+        
+    //     document.getElementById("balance").innerHTML = "Sisa Saldo = "+ balance;
+    //     return balance
+    // },
+    // balance: function () {
+    //     let balance = totalExpend;
+
+    //     document.getElementById("balance").innerHTML = "Total = "+ balance;
+    //     return balance;
+    // }
 }
 
 function copy(obj) {

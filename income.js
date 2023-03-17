@@ -100,15 +100,19 @@ const incomeTableApplication = {
             });
         }
 
-        this.total();
+        this.totalIncome();
     },
-    total: function () {
-        var table = document.getElementById("tableIncome"), sumHsl = 0;
-		for(var t = 1; t < table.rows.length; t++)
-		{
-			sumHsl = sumHsl + parseInt(table.rows[t].cells[3].innerHTML);
-		}
-		document.getElementById("totalIncome").innerHTML = "Total = "+ sumHsl;
+    totalIncome: function () {
+        this.incomeTable = databaseIncomeTable.get()
+        console.log(this.incomeTable);
+
+        let totalIncom = 0
+        this.incomeTable.forEach(item => {
+            totalIncom = totalIncom + JSON.parse(item.pay)
+        }) 
+        
+        document.getElementById("totalIncome").innerHTML = "Total = "+ totalIncom;
+        return totalIncom
     }
 }
 

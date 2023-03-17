@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/daisyui@2.51.3/dist/full.css" rel="stylesheet" type="text/css" />
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://kit.fontawesome.com/bf1f4cbe6c.js" crossorigin="anonymous"></script>
     <title>E-KAS</title>
 </head>
 <body>
@@ -27,7 +28,7 @@
                     </ul>
                 </li>
                 <li><a href="studentList.html">Daftar Siswa</a></li>
-                <li><a href="login.html">Keluar</a></li>
+                <li><a href="login.html"><i class="fa-solid fa-right-from-bracket"></i>Keluar</a></li>
             </ul>
         </div>
     </div>
@@ -43,6 +44,7 @@
             <div>
                 <form id="form-expenditure" action="" onsubmit="event.preventDefault(); addExpenditure(this)">
                     <input type="hidden" name="index" value="-1">
+                    <input type="hidden" name="totalExpenditure" value="">
                     <div>
                         <div>
                             <label for="date">Tanggal</label>
