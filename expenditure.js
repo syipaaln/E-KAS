@@ -97,9 +97,13 @@ const expenditureTableApplication = {
         console.log(this.expenditureTable);
 
         let totalExpend = 0
-        this.expenditureTable.forEach(item => {
-            totalExpend = totalExpend + JSON.parse(item.take)
-        }) 
+        if (this.expenditureTable == null) {
+            this.expenditureTable = [];
+        } else {
+            this.expenditureTable.forEach(item => {
+                totalExpend = totalExpend + JSON.parse(item.take)
+            }) 
+        }
 
         document.getElementById("totalExpenditure").innerHTML = "Total = "+ totalExpend;
         return totalExpend

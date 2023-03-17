@@ -107,9 +107,13 @@ const incomeTableApplication = {
         console.log(this.incomeTable);
 
         let totalIncom = 0
-        this.incomeTable.forEach(item => {
-            totalIncom = totalIncom + JSON.parse(item.pay)
-        }) 
+        if (this.incomeTable == null) {
+            this.incomeTable = [];
+        } else {
+            this.incomeTable.forEach(item => {
+                totalIncom = totalIncom + JSON.parse(item.pay)
+            }) 
+        }
         
         document.getElementById("totalIncome").innerHTML = "Total = "+ totalIncom;
         return totalIncom
