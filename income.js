@@ -92,7 +92,7 @@ const incomeTableApplication = {
             this.incomeTable.forEach((income) => {
                 componentIncomeTable.innerHTML += `
                 <tr>
-                    <th>1</th>
+                    <th></th>
                     <td>${income.name}</td>
                     <td>${income.date}</td>
                     <td>${income.pay}</td>
@@ -103,8 +103,7 @@ const incomeTableApplication = {
         this.totalIncome();
     },
     totalIncome: function () {
-        this.incomeTable = databaseIncomeTable.get()
-        console.log(this.incomeTable);
+        this.incomeTable = databaseIncomeTable.get();
 
         let totalIncom = 0
         if (this.incomeTable == null) {
@@ -116,7 +115,7 @@ const incomeTableApplication = {
         }
         
         document.getElementById("totalIncome").innerHTML = "Total = "+ totalIncom;
-        return totalIncom
+        return totalIncom;
     }
 }
 

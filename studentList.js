@@ -44,6 +44,8 @@ const studentListApplication = {
 
         form.index.value = this.student.index;
         form.name.value = this.student.name;
+
+        document.getElementById('btn-save-student').innerHTML = 'Simpan';
     },
     showStudentList: function () {
         this.studentList = databaseStudentList.get();
@@ -52,14 +54,31 @@ const studentListApplication = {
         if (this.studentList === null) {
             this.studentList = [];
         } else {
-            this.studentList.forEach((student) => {
+            this.studentList.forEach((student, index) => {
                 componentStudentList.innerHTML += `
                 <tr>
-                    <th>1</th>
+                    <td></td>
                     <td>${student.name}</td>
+                    <td><button onclick="studentListApplication.editStudent(${index})" class="btn btn-primary btn-xs">Edit</button></td>
+                    <td><button onclick="studentListApplication.deleteStudent(${index})" class="btn btn-error btn-xs">Hapus</button></td>
                 </tr>`
             });
         }
+    },
+    deleteStudent: function (index) {
+        if(confirm('Apakah anda yakin ingin menghapus ini?')) {
+            this.studentList.splice(index, 1);
+            databaseStudentList.save(this.studentList);
+            this.showStudentList();
+        }
+    },
+    editStudent: function(index) {
+        const student= this.studentList[index];
+        const form = document.getElementById('form-student');
+        form.index.value = index;
+        form.name.value = student.name;
+
+        document.getElementById('btn-save-student').innerHTML = 'Edit';
     }
 }
 

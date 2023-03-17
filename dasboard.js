@@ -7,24 +7,7 @@ const databaseStudentList = {
         return JSON.parse(localStorage.getItem('studentList'));
     }
 }
-const studentListApplication = {
-    showStudentList: function () {
-        this.studentList = databaseStudentList.get();
-        const componentStudentList = document.getElementById('student-list');
-        componentStudentList.innerHTML = '';
-        if (this.studentList === null) {
-            this.studentList = [];
-        } else {
-            this.studentList.forEach((student) => {
-                componentStudentList.innerHTML += `
-                <tr>
-                    <th>1</th>
-                    <td>${student.name}</td>
-                </tr>`
-            });
-        }
-    }
-}
+
 const databaseIncomeTable = {
     save(incomeTable) {
         localStorage.setItem('incomeTable', JSON.stringify(incomeTable));
@@ -34,7 +17,32 @@ const databaseIncomeTable = {
         return JSON.parse(localStorage.getItem('incomeTable'));
     }
 }
-const incomeTableApplication = {
+
+const databaseExpenditureTable = {
+    save(expenditureTable) {
+        localStorage.setItem('expenditureTable', JSON.stringify(expenditureTable));
+    },
+
+    get() {
+        return JSON.parse(localStorage.getItem('expenditureTable'));
+    }
+}
+
+const dashboard = {
+    showStudentList: function () {
+        this.studentList = databaseStudentList.get();
+        let totalStudent = null
+        if (this.studentList == null) {
+            this.studentList = [];
+        } else {
+            for(totalStudent = 1; totalStudent <= this.studentList.length; totalStudent++) {
+                console.log(totalStudent);
+            }
+        }
+        
+        document.getElementById("student").innerHTML = totalStudent + " Orang";
+        return totalStudent;
+    },
     showIncomeTable: function () {
         this.incomeTable = databaseIncomeTable.get();
 
@@ -48,19 +56,8 @@ const incomeTableApplication = {
         }
         
         document.getElementById("income").innerHTML = "Rp. "+ totalIncom;
-        return totalIncom
-    }
-}
-const databaseExpenditureTable = {
-    save(expenditureTable) {
-        localStorage.setItem('expenditureTable', JSON.stringify(expenditureTable));
+        return totalIncom;
     },
-
-    get() {
-        return JSON.parse(localStorage.getItem('expenditureTable'));
-    }
-}
-const expenditureTableApplication = {
     showExpenditureTable: function () {
         this.expenditureTable = databaseExpenditureTable.get();
 
@@ -74,14 +71,11 @@ const expenditureTableApplication = {
         }
         
         document.getElementById("expend").innerHTML = "Rp. "+ totalExpend;
-        return totalExpend
-    }
-}
-const balance = {
-balance: function () {
-        this.expenditureTable = databaseExpenditureTable.get()
-        this.incomeTable = databaseIncomeTable.get()
-        console.log(this.incomeTable);
+        return totalExpend;
+    },
+    showBalance: function () {
+        this.expenditureTable = databaseExpenditureTable.get();
+        this.incomeTable = databaseIncomeTable.get();
 
         let balance = 0
         this.incomeTable.forEach(item => {
@@ -92,11 +86,11 @@ balance: function () {
         })
         
         document.getElementById("balance").innerHTML = "Rp. "+ balance;
-        return balance
+        return balance;
     }
 }
 
-
-incomeTableApplication.showIncomeTable();
-expenditureTableApplication.showExpenditureTable();
-balance.balance();
+dashboard.showStudentList();
+dashboard.showIncomeTable();
+dashboard.showExpenditureTable();
+dashboard.showBalance();

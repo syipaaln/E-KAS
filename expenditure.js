@@ -24,6 +24,8 @@ const databaseIncomeTable = {
     }
 }
 
+
+
 const expenditureTableApplication = {
     expenditure: {
         index: -1,
@@ -82,7 +84,7 @@ const expenditureTableApplication = {
             this.expenditureTable.forEach((expenditure) => {
                 componentExpenditureTable.innerHTML += `
                 <tr>
-                    <th>1</th>
+                    <th>${this.addNumeration()}</th>
                     <td>${expenditure.date}</td>
                     <td>${expenditure.explanation}</td>
                     <td>${expenditure.take}</td>
@@ -90,11 +92,9 @@ const expenditureTableApplication = {
             });
         }
         this.totalExpenditure();
-        // this.balance();
     },
     totalExpenditure: function () {
-        this.expenditureTable = databaseExpenditureTable.get()
-        console.log(this.expenditureTable);
+        this.expenditureTable = databaseExpenditureTable.get();
 
         let totalExpend = 0
         if (this.expenditureTable == null) {
@@ -108,29 +108,11 @@ const expenditureTableApplication = {
         document.getElementById("totalExpenditure").innerHTML = "Total = "+ totalExpend;
         return totalExpend
     },
-    
-    // balance: function () {
-    //     this.expenditureTable = databaseExpenditureTable.get()
-    //     this.incomeTable = databaseIncomeTable.get()
-    //     console.log(this.incomeTable);
-
-    //     let balance = 0
-    //     this.incomeTable.forEach(item => {
-    //         balance = balance + JSON.parse(item.pay)
-    //     })
-    //     this.expenditureTable.forEach(item => {
-    //         balance = balance - JSON.parse(item.take)
-    //     })
-        
-    //     document.getElementById("balance").innerHTML = "Sisa Saldo = "+ balance;
-    //     return balance
-    // },
-    // balance: function () {
-    //     let balance = totalExpend;
-
-    //     document.getElementById("balance").innerHTML = "Total = "+ balance;
-    //     return balance;
-    // }
+    addNumeration: function () {
+        for(var i = 1; i <= this.expenditureTable.length; i++) {
+            console.log(i);
+        }
+    }
 }
 
 function copy(obj) {
