@@ -35,12 +35,11 @@ const dashboard = {
         if (this.studentList == null) {
             this.studentList = [];
         } else {
-            for(totalStudent = 1; totalStudent <= this.studentList.length; totalStudent++) {
-                console.log(totalStudent);
+            for(totalStudent = 0; totalStudent <= this.studentList.length; totalStudent++) {
+                document.getElementById("student").innerHTML = totalStudent + " Orang";
             }
         }
         
-        document.getElementById("student").innerHTML = totalStudent + " Orang";
         return totalStudent;
     },
     showIncomeTable: function () {

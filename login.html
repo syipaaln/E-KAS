@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="lemonade">
+<html lang="en" data-theme="lemonade" class="bg-primary">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,17 +9,12 @@
     <title>Masuk</title>
 </head>
 <body>
+    <br><br><br><br><br>
+    <!-- <div class="m-20"> -->
     <div class="container mx-auto">
         <div class="flex justify-center gap-5">
-            <nav class="navbar">
-                <ul class="menu menu-horizontal px-1"></ul>  
-            </nav>
-        </div>
-    </div>
-
-    <div class="container mx-auto">
-        <div class="flex justify-center gap-5">
-            <div class="card w-96 bg-base-100 shadow-xl bg-primary">
+            <div class="card lg:card-side bg-base-100 shadow-xl">
+                <figure class="w-96 h-96"><img src="Butterfly.jpg" alt="kupukupu" /></figure>
                 <div class="card-body">
                     <h2 class="card-title">Masuk</h2>
                     <p>
@@ -28,16 +23,16 @@
                                 <label for="username" class="label">Username</label>
                             </div>
                             <div>
-                                <input name="username" id="username" type="text" placeholder="Masukan Username" class="input w-full max-w-xs input-sm bg-primary input-info" />
+                                <input name="username" id="username" type="text" placeholder="Masukan Username" class="input w-full max-w-xs input-sm input-primary" />
                             </div>
                             <div>
                                 <label for="password" class="label">Kata Sandi</label>
                             </div>
                             <div>
-                                <input name="password" id="password" type="text" placeholder="Masukan Kata Sandi" class="input w-full max-w-xs input-sm input bg-primary input-info" />
+                                <input name="password" id="password" type="password" placeholder="Masukan Kata Sandi" class="input w-full max-w-xs input-sm input-primary" />
                             </div>
-                            <div class="card-actions justify-end"></div>
-                                <button class="btn btn-info mt-2 btn-sm" onClick="Login()" type="button">Masuk</button>
+                            <div class="card-actions justify-end">
+                                <button class="btn text-primary btn-primary mt-2 btn-sm" onClick="Login()" type="button">Masuk</button>
                             </div>
                         </form>
                     </p>  
@@ -45,6 +40,7 @@
             </div>
         </div>
     </div>
+<!-- </div> -->
     <script type="text/Javascript">
         function Login(){ 
             var user = document.getElementById("username").value;

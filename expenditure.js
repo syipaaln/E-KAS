@@ -84,7 +84,7 @@ const expenditureTableApplication = {
             this.expenditureTable.forEach((expenditure) => {
                 componentExpenditureTable.innerHTML += `
                 <tr>
-                    <th>${this.addNumeration()}</th>
+                    <th></th>
                     <td>${expenditure.date}</td>
                     <td>${expenditure.explanation}</td>
                     <td>${expenditure.take}</td>
@@ -107,11 +107,6 @@ const expenditureTableApplication = {
 
         document.getElementById("totalExpenditure").innerHTML = "Total = "+ totalExpend;
         return totalExpend
-    },
-    addNumeration: function () {
-        for(var i = 1; i <= this.expenditureTable.length; i++) {
-            console.log(i);
-        }
     }
 }
 
