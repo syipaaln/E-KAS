@@ -24,12 +24,18 @@ const databaseStudentList = {
     }
 }
 
+$('#name').on('change', function(){
+    const grade = $('#name option:selected').data('grade');
+
+    $('[name=class]').val(grade);
+  });
+
 const studentListApplication = {
     showStudentList: function () {
         this.studentList = databaseStudentList.get();
         const listOption = document.getElementById('name');
         this.studentList.forEach((item) => {
-            listOption.innerHTML += `<option>${item.name}</option>`
+            listOption.innerHTML += `<option data-grade="${item.class}">${item.name}</option>`
         })
     }
 }
@@ -38,6 +44,7 @@ const incomeTableApplication = {
     income: {
         index: -1,
         name: null,
+        class: null,
         date: null,
         pay: null,
     },
@@ -45,11 +52,16 @@ const incomeTableApplication = {
     inputIncome: function (form) {
         this.income.index = form.index.value;
         this.income.name = form.name.value;
+        this.income.class = form.class.value;
         this.income.date = form.date.value;
         this.income.pay = form.pay.value;
 
         if(!this.income.name) {
             alert('Nama tidak boleh kosong!');
+            return false
+        }
+        if(!this.income.class) {
+            alert('Kelas tidak boleh kosong!');
             return false
         }
         if(!this.income.date) {
@@ -74,11 +86,13 @@ const incomeTableApplication = {
     resetFormIncome: function (form) {
         this.income.index = -1;
         this.income.name = null;
+        this.income.class = null;
         this.income.date = null;
         this.income.pay = null;
 
         form.index.value = this.income.index;
         form.name.value = this.income.name;
+        form.class.value = this.income.class;
         form.date.value = this.income.date;
         form.pay.value = this.income.pay;
     },
@@ -92,8 +106,9 @@ const incomeTableApplication = {
             this.incomeTable.forEach((income) => {
                 componentIncomeTable.innerHTML += `
                 <tr>
-                    <th></th>
+                    <th>1</th>
                     <td>${income.name}</td>
+                    <td>${income.class}</td>
                     <td>${income.date}</td>
                     <td>${income.pay}</td>
                 </tr>`
@@ -103,7 +118,8 @@ const incomeTableApplication = {
         this.totalIncome();
     },
     totalIncome: function () {
-        this.incomeTable = databaseIncomeTable.get();
+        this.incomeTable = databaseIncomeTable.get()
+        console.log(this.incomeTable);
 
         let totalIncom = 0
         if (this.incomeTable == null) {
@@ -115,7 +131,7 @@ const incomeTableApplication = {
         }
         
         document.getElementById("totalIncome").innerHTML = "Total = "+ totalIncom;
-        return totalIncom;
+        return totalIncom
     }
 }
 

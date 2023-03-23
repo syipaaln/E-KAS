@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/daisyui@2.51.3/dist/full.css" rel="stylesheet" type="text/css" />
     <script src="https://kit.fontawesome.com/bf1f4cbe6c.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <title>E-KAS</title>
 </head>
@@ -49,9 +50,17 @@
                             <label for="name">Nama</label>
                         </div>
                         <div>
-                            <select name="name" id="name" class="select select-primary w-full max-w-xs">
-                                <option value="">Pilih Nama</option>
+                            <select name="name" id="name" class="select select-primary w-full max-w-xs" >
+                                <option>Pilih Nama</option>
                             </select>
+                        </div>
+                    </div>
+                    <div>
+                        <div>
+                            <label for="class">Kelas</label>
+                        </div>
+                        <div>
+                            <input id="class" name="class" type="text" readonly placeholder="Masukan Kelas" class="input input-bordered input-primary w-full max-w-xs" />
                         </div>
                     </div>
                     <div>
@@ -82,6 +91,7 @@
                     <tr>
                         <th></th>
                         <th>Nama</th>
+                        <th>Kelas</th>
                         <th>Tanggal</th>
                         <th>Bayar</th>
                     </tr>

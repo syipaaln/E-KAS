@@ -18,15 +18,21 @@ const studentListApplication = {
     student: {
         index: -1,
         name: null,
+        class: null,
     },
     studentList: [],
     inputStudent: function (form) {
         this.student.index = form.index.value;
         this.student.name = form.name.value;
+        this.student.class = form.class.value
 
         if(!this.student.name) {
             alert('Nama tidak boleh kosong!');
             return false
+        }
+        if (!this.student.class) {
+            alert('Kelas tidak boleh kosong!');
+            return false 
         }
         if(this.student.index == -1) {
             this.studentList = this.studentList || [];
@@ -41,9 +47,11 @@ const studentListApplication = {
     resetFormStudent: function (form) {
         this.student.index = -1;
         this.student.name = null;
+        this.student.class = null;
 
         form.index.value = this.student.index;
         form.name.value = this.student.name;
+        form.class.value = this.student.class;
 
         document.getElementById('btn-save-student').innerHTML = 'Simpan';
     },
@@ -59,6 +67,7 @@ const studentListApplication = {
                 <tr>
                     <td></td>
                     <td>${student.name}</td>
+                    <td>${student.class}</td>
                     <td><button onclick="studentListApplication.editStudent(${index})" class="btn btn-primary btn-xs">Edit</button></td>
                     <td><button onclick="studentListApplication.deleteStudent(${index})" class="btn btn-error btn-xs">Hapus</button></td>
                 </tr>`
@@ -77,6 +86,7 @@ const studentListApplication = {
         const form = document.getElementById('form-student');
         form.index.value = index;
         form.name.value = student.name;
+        form.class.value = student.class;
 
         document.getElementById('btn-save-student').innerHTML = 'Edit';
     }
