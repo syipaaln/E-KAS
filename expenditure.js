@@ -24,7 +24,9 @@ const databaseIncomeTable = {
     }
 }
 
-
+function logout () {
+    expenditureTableApplication.logout();
+}
 
 const expenditureTableApplication = {
     expenditure: {
@@ -107,6 +109,9 @@ const expenditureTableApplication = {
 
         document.getElementById("totalExpenditure").innerHTML = "Total = "+ totalExpend;
         return totalExpend
+    },
+    logout: function () {
+        localStorage.removeItem('databaseLogin');
     }
 }
 

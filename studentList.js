@@ -14,6 +14,10 @@ const databaseStudentList = {
     }
 }
 
+function logout () {
+    studentListApplication.logout();
+}
+
 const studentListApplication = {
     student: {
         index: -1,
@@ -89,6 +93,9 @@ const studentListApplication = {
         form.class.value = student.class;
 
         document.getElementById('btn-save-student').innerHTML = 'Edit';
+    },
+    logout: function () {
+        localStorage.removeItem('databaseLogin');
     }
 }
 

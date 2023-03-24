@@ -28,6 +28,11 @@ const databaseExpenditureTable = {
     }
 }
 
+
+
+
+
+
 const dashboard = {
     showStudentList: function () {
         this.studentList = databaseStudentList.get();
@@ -77,19 +82,29 @@ const dashboard = {
         this.incomeTable = databaseIncomeTable.get();
 
         let balance = 0
-        this.incomeTable.forEach(item => {
-            balance = balance + JSON.parse(item.pay)
-        })
-        this.expenditureTable.forEach(item => {
-            balance = balance - JSON.parse(item.take)
-        })
+        if(this.incomeTable == null) {
+            this.incomeTable = [];
+        } else {
+            this.incomeTable.forEach(item => {
+                balance = balance + JSON.parse(item.pay)
+            })
+        }
+        if(this.expenditureTable == null) {
+            this.expenditureTable = [];
+        } else {
+            this.expenditureTable.forEach(item => {
+                balance = balance - JSON.parse(item.take);
+            })
+        }
         
         document.getElementById("balance").innerHTML = "Rp. "+ balance;
         return balance;
     }
 }
 
+
 dashboard.showStudentList();
 dashboard.showIncomeTable();
 dashboard.showExpenditureTable();
 dashboard.showBalance();
+

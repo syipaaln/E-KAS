@@ -24,6 +24,10 @@ const databaseStudentList = {
     }
 }
 
+function logout () {
+    incomeTableApplication.logout();
+}
+
 $('#name').on('change', function(){
     const grade = $('#name option:selected').data('grade');
 
@@ -132,6 +136,9 @@ const incomeTableApplication = {
         
         document.getElementById("totalIncome").innerHTML = "Total = "+ totalIncom;
         return totalIncom
+    },
+    logout: function () {
+        localStorage.removeItem('databaseLogin');
     }
 }
 
