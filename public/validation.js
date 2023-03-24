@@ -16,8 +16,7 @@ const validation = {
     validate: function () {
         this.login = databaseLogin.get();
        if (!this.login) {
-            window.location.href = "login.html";
-            // alert('login dulu!');
+            window.location.href = "index.html";
         }
     },
     logout: function () {
